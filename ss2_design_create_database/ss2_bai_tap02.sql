@@ -2,23 +2,23 @@ create database bai_tap02_ss2;
 use bai_tap02_ss2;
 create table customer (
 	customer_id int primary key auto_increment,
-    customer_name varchar(45) not null,
-    customer_age varchar(10) not null
+    customer_name varchar(25),
+    customer_age tinyint
 );
 create table `order` (
 	order_id int primary key auto_increment,
     order_date datetime not null,
-    order_total_price varchar(45),
+    order_total_price int,
     customer_id int not null,
     constraint fk_order_customer_id foreign key (customer_id) references customer (customer_id)
 );
 create table product (
 	product_id int primary key auto_increment,
-    product_name varchar(45) not null,
-    product_price varchar(45) not null
+    product_name varchar(25) not null,
+    product_price int not null
 );
 create table order_detail (
-	order_quantity varchar(45) not null,
+	order_quantity int not null,
     order_id int not null,
     product_id int not null,
     primary key (order_id, product_id),
