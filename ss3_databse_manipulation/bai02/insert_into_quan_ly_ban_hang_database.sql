@@ -6,7 +6,7 @@ insert into customer (customer_name, customer_age) values ('Hong Ha', 50);
 
 insert into `order` (order_date, order_total_price, customer_id) values ('2006/3/21', null, 1);
 insert into `order` (order_date, order_total_price, customer_id) values ('2006/3/23', null, 2);
-insert into `order` (order_date, order_total_price, customer_id) values ('2006/3/16/', null, 1);
+insert into `order` (order_date, order_total_price, customer_id) values ('2006/3/16', null, 1);
 
 insert into product (product_name, product_price) values ('May Giat', 3);
 insert into product (product_name, product_price) values ('Tu Lanh', 5);
