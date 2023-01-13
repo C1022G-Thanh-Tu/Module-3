@@ -6,8 +6,9 @@ create table vi_tri (
 	ma_vi_tri int primary key,
     ten_vi_tri varchar(45)
 );
-insert into vi_tri (ma_vi_tri, ten_vi_tri) values (1, 'Quản lý');
-insert into vi_tri (ma_vi_tri, ten_vi_tri) values (2, 'Nhân viên');
+insert into vi_tri (ma_vi_tri, ten_vi_tri) values
+(1, 'Quản lý'),
+(2, 'Nhân viên');
 
 create table trinh_do (
 	ma_trinh_do int primary key,
