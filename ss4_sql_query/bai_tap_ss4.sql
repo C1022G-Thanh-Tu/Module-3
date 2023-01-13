@@ -10,6 +10,7 @@ where
     from 
       `subject`
   );
+  
 select 
   `subject`.sub_name, 
   mark.mark 
@@ -23,6 +24,7 @@ where
     from 
       mark
   );
+  
 select 
   student.student_name as 'Học sinh', 
   avg(mark.mark) as 'Điểm trung bình' 
