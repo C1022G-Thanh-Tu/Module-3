@@ -17,3 +17,10 @@ where dv.ma_dich_vu not in (
     where year(hd.ngay_ket_thuc) = 2021
 )
 group by dv.ma_dich_vu;
+
+-- Câu 8
+-- Cách 1
+select ho_ten from khach_hang
+group by ho_ten;
+
+-- Cách 2
