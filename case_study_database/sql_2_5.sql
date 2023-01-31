@@ -21,16 +21,13 @@ where loai_khach.ten_loai_khach = 'Diamond'
 group by hop_dong.ma_khach_hang
 order by count(hop_dong.ma_khach_hang);
 
--- set sql_mode=(select replace(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
--- select khach_hang.ma_khach_hang, khach_hang.ho_ten, loai_khach.ten_loai_khach, hop_dong.ma_hop_dong, 
--- dich_vu.ten_dich_vu, hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, 
--- sum((dich_vu.chi_phi_thue + ifnull((hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia), 0))) as 'Tổng tiền'
--- from hop_dong
--- left join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
--- left join dich_vu_di_kem on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
--- left join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
--- right join khach_hang on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
--- inner join loai_khach on khach_hang.ma_loai_khach = loai_khach.ma_loai_khach
--- group by hop_dong.ma_hop_dong, khach_hang.ma_khach_hang
--- order by khach_hang.ma_khach_hang;
-
+set sql_mode=(select replace(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+select kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu,hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, sum(ifnull(dv.chi_phi_thue,0) + ifnull(hdct.so_luong,0) * ifnull(dvdk.gia,0)) tong_tien
+from khach_hang kh
+inner join loai_khach lk on kh.ma_loai_khach = lk.ma_loai_khach
+left join hop_dong hd on kh.ma_khach_hang = hd.ma_khach_hang
+left join dich_vu dv on hd.ma_dich_vu = dv.ma_dich_vu
+left join hop_dong_chi_tiet hdct on hd.ma_hop_dong = hdct.ma_hop_dong
+left join dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+group by kh.ma_khach_hang, hd.ma_hop_dong
+order by kh.ma_khach_hang;
