@@ -17,18 +17,9 @@ insert into products(
   product_status
 ) 
 values 
-  (
-    'mt', 'máy tính', '1002039', '12', 
-    'second hand', 'vip'
-  ), 
-  (
-    'tl', 'tủ lạnh', '234987123', 
-    '5', 'made by tung của', 'ultra vip'
-  ), 
-  (
-    'mg', 'máy giặt', '423578634', 
-    '7', 'vn high quality', 'super vip'
-  );
+  ('mt', 'máy tính', '1002039', '12', 'second hand', 'vip'), 
+  ('tl', 'tủ lạnh', '234987123', '5', 'made by tung của', 'ultra vip'), 
+  ('mg', 'máy giặt', '423578634', '7', 'vn high quality', 'super vip');
 -- Bước 3
 create index index_product_code on products (product_code);
 create index index_product_name_price on products (product_name, product_price);
