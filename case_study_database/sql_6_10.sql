@@ -32,4 +32,8 @@ from (select ho_ten, row_number() over (partition by ho_ten) as rownumber from k
 where t.rownumber < 2;
 
 -- Bài 9
-
+select month(ngay_lam_hop_dong) as thang, count(ma_hop_dong) as so_luong_khach_hang 
+from hop_dong
+where year(ngay_lam_hop_dong) = 2021
+group by thang
+order by thang;
