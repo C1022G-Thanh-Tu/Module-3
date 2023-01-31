@@ -28,6 +28,8 @@ select distinct ho_ten from khach_hang;
 
 -- Cách 3
 select t.ho_ten
-from (select ho_ten,  row_number() over (partition by ho_ten) as rownumber from khach_hang) t
+from (select ho_ten, row_number() over (partition by ho_ten) as rownumber from khach_hang) t
 where t.rownumber < 2;
+
+-- Bài 9
 
