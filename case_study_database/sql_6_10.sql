@@ -37,3 +37,9 @@ from hop_dong
 where year(ngay_lam_hop_dong) = 2021
 group by thang
 order by thang;
+
+-- Bài 10
+select distinct hd.ma_hop_dong, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, hd.tien_dat_coc, sum(ifnull(so_luong,0)) as so_luong_dich_vu_di_kem 
+from hop_dong_chi_tiet hdct
+right join hop_dong hd on hd.ma_hop_dong = hdct.ma_hop_dong
+group by ma_hop_dong;
