@@ -49,4 +49,15 @@ select kh.ma_khach_hang, kh.ho_ten
 from khach_hang kh;
 
 -- Câu 19
+update dich_vu_di_kem dvdk
+set gia = gia*2
+where dvdk.ma_dich_vu_di_kem not in (
+	select ma_dich_vu_di_kem from hop_dong_chi_tiet hdct 
+    group by hdct.ma_dich_vu_di_kem
+	having sum(ifnull(hdct.so_luong,0)) < 10 
+);
 
+-- Câu 20
+select ma_khach_hang, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi from khach_hang
+union all
+select ma_nhan_vien, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi from nhan_vien;
