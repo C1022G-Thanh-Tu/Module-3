@@ -57,14 +57,13 @@ having so_lan_su_dung = 1
 order by hd.ma_hop_dong;
 
 -- Câu 15
-select nv.ma_nhan_vien, nv.ho_ten, trd.ten_trinh_do, bph.ten_bo_phan, nv.so_dien_thoai, nv.dia_chi,
-count(hd.ma_hop_dong) as so_lan_su_dung
+select nv.ma_nhan_vien, nv.ho_ten, trd.ten_trinh_do, bph.ten_bo_phan, nv.so_dien_thoai, nv.dia_chi
 from hop_dong hd
 join nhan_vien nv on nv.ma_nhan_vien = hd.ma_nhan_vien
 join trinh_do trd on trd.ma_trinh_do = nv.ma_trinh_do
 join bo_phan bph on bph.ma_bo_phan = nv.ma_bo_phan
 group by hd.ma_nhan_vien
-having so_lan_su_dung < 4;
+having count(hd.ma_hop_dong) < 4;
 
 -- select nv.ma_nhan_vien, nv.ho_ten, trd.ten_trinh_do, bph.ten_bo_phan, nv.so_dien_thoai, nv.dia_chi
 -- from hop_dong hd
