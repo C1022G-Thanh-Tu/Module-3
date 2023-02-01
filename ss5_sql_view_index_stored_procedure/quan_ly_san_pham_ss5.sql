@@ -84,13 +84,15 @@ begin
 end // 
 delimiter ;
 call list_all_information;
-delimiter // create procedure add_new_product(
-  product_code varchar(45), 
-  product_name varchar(45), 
-  product_price varchar(45), 
-  product_amount varchar(45), 
-  product_description varchar(45), 
-  product_status varchar(45)
+
+delimiter //
+create procedure add_new_product(
+  in p_product_code varchar(45), 
+  in p_product_name varchar(45), 
+  in p_product_price varchar(45), 
+  in p_product_amount varchar(45), 
+  in p_product_description varchar(45), 
+  in p_product_status varchar(45)
 ) begin insert into products(
   product_code, product_name, product_price, 
   product_amount, product_description, 
@@ -102,19 +104,22 @@ values
     product_amount, product_description, 
     product_status
   );
-end // delimiter;
+end 
+// delimiter ;
 call add_new_product (
   'đt', 'điện thoại', '23934287', 
   '22', 'samsung', 'almost vip'
 );
-delimiter // create procedure edit_by_id(
-  id int, 
-  product_code varchar(45), 
-  product_name varchar(45), 
-  product_price varchar(45), 
-  product_amount varchar(45), 
-  product_description varchar(45), 
-  product_status varchar(45)
+
+delimiter 
+// create procedure edit_by_id(
+  in p_id int, 
+  in p_product_code varchar(45), 
+  in p_product_name varchar(45), 
+  in p_product_price varchar(45), 
+  in p_product_amount varchar(45), 
+  in p_product_description varchar(45), 
+  in p_product_status varchar(45)
 ) begin 
 update 
   products 
@@ -127,12 +132,16 @@ set
   products.product_status = product_status 
 where 
   products.id = id;
-end // delimiter;
+end 
+// delimiter;
 call edit_by_id (4, '', '', '', '', '', '');
-delimiter // create procedure delete_by_id (id int) begin 
+
+delimiter // 
+create procedure delete_by_id (in p_id int) begin 
 delete from 
   products 
 where 
   products.id = id;
-end // delimiter;
+end 
+// delimiter ;
 call delete_by_id(4);
