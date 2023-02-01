@@ -29,25 +29,18 @@ and hd.ma_hop_dong not in (
 group by hd.ma_hop_dong
 order by hd.ma_hop_dong;
 
--- Câu 13: Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. 
--- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
+-- Câu 13
 
 create view v_dich_vu_di_kem as
 select sum(ifnull(so_luong,0)) as so_luong_dich_vu_di_kem 
 from hop_dong_chi_tiet
 group by ma_dich_vu_di_kem;
-drop view v_dich_vu_di_kem;
 
-select dvdk.ma_dich_vu_di_kem, dvdk.ten_dich_vu_di_kem, dvdk.gia, dvdk.don_vi, dvdk.trang_thai 
+select dvdk.ma_dich_vu_di_kem, dvdk.ten_dich_vu_di_kem, dvdk.gia, dvdk.don_vi, dvdk.trang_thai, sum(ifnull(hdct.so_luong,0)) as so_luong_dich_vu_di_kem
 from hop_dong_chi_tiet hdct
-join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem;
-
-
--- select t.so_luong_dich_vu_di_kem from
--- (select sum(ifnull(so_luong,0)) as so_luong_dich_vu_di_kem 
--- from hop_dong_chi_tiet
--- group by ma_dich_vu_di_kem) t
--- where t.so_luong_dich_vu_di_kem = max(t.so_luong_dich_vu_di_kem);
+join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
+group by hdct.ma_dich_vu_di_kem
+having so_luong_dich_vu_di_kem = (select max(v_dich_vu_di_kem.so_luong_dich_vu_di_kem) from v_dich_vu_di_kem);
 
 -- Câu 14
 set sql_mode=(select replace(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
