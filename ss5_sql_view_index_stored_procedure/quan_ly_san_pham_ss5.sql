@@ -111,8 +111,8 @@ call add_new_product (
   '22', 'samsung', 'almost vip'
 );
 
-delimiter 
-// create procedure edit_by_id(
+delimiter // 
+create procedure edit_by_id(
   in p_id int, 
   in p_product_code varchar(45), 
   in p_product_name varchar(45), 
