@@ -36,7 +36,8 @@ select sum(ifnull(so_luong,0)) as so_luong_dich_vu_di_kem
 from hop_dong_chi_tiet
 group by ma_dich_vu_di_kem;
 
-select dvdk.ma_dich_vu_di_kem, dvdk.ten_dich_vu_di_kem, dvdk.gia, dvdk.don_vi, dvdk.trang_thai, sum(ifnull(hdct.so_luong,0)) as so_luong_dich_vu_di_kem
+select dvdk.ma_dich_vu_di_kem, dvdk.ten_dich_vu_di_kem, dvdk.gia, dvdk.don_vi, dvdk.trang_thai, 
+sum(ifnull(hdct.so_luong,0)) as so_luong_dich_vu_di_kem
 from hop_dong_chi_tiet hdct
 join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
 group by hdct.ma_dich_vu_di_kem
@@ -44,7 +45,8 @@ having so_luong_dich_vu_di_kem = (select max(v_dich_vu_di_kem.so_luong_dich_vu_d
 
 -- Câu 14
 set sql_mode=(select replace(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
-select hd.ma_hop_dong, ldv.ten_loai_dich_vụ, dvdk.ten_dich_vu_di_kem, count(hdct.ma_hop_dong_chi_tiet) as so_lan_su_dung
+select hd.ma_hop_dong, ldv.ten_loai_dich_vụ, dvdk.ten_dich_vu_di_kem, 
+count(hdct.ma_hop_dong_chi_tiet) as so_lan_su_dung
 from hop_dong hd
 join dich_vu dv on dv.ma_dich_vu = hd.ma_dich_vu
 join loai_dich_vu ldv on ldv.ma_loai_dich_vu = dv.ma_loai_dich_vu
