@@ -77,12 +77,12 @@ set
 drop 
   view view_products;
 -- Bước 5
-delimiter // create procedure list_all_information() begin 
-select 
-  * 
-from 
-  products;
-end // delimiter;
+delimiter // 
+create procedure list_all_information() 
+begin 
+	select * from products;
+end // 
+delimiter ;
 call list_all_information;
 delimiter // create procedure add_new_product(
   product_code varchar(45), 
@@ -136,4 +136,3 @@ where
   products.id = id;
 end // delimiter;
 call delete_by_id(4);
-

@@ -5,7 +5,7 @@ where
 (substring_index(ho_ten, ' ', -1) like 'H%'
 or substring_index(ho_ten, ' ', -1) like 'K%'
 or substring_index(ho_ten, ' ', -1) like 'T%')
-and length(ho_ten) <= 15;
+and char_length(ho_ten) <= 15;
 
 select khach_hang.ma_khach_hang, ho_ten, ngay_sinh, dia_chi from khach_hang 
 where 
