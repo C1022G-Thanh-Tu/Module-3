@@ -57,7 +57,8 @@ having so_lan_su_dung = 1
 order by hd.ma_hop_dong;
 
 -- Câu 15
-select nv.ma_nhan_vien, nv.ho_ten, trd.ten_trinh_do, bph.ten_bo_phan, nv.so_dien_thoai, nv.dia_chi
+select nv.ma_nhan_vien, nv.ho_ten, trd.ten_trinh_do, 
+bph.ten_bo_phan, nv.so_dien_thoai, nv.dia_chi
 from hop_dong hd
 join nhan_vien nv on nv.ma_nhan_vien = hd.ma_nhan_vien
 join trinh_do trd on trd.ma_trinh_do = nv.ma_trinh_do

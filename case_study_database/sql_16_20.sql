@@ -8,7 +8,8 @@ where nv.ma_nhan_vien not in (
 );
 select * from nhan_vien;
 
--- Câu 17
+-- Câu 17: Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, 
+-- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 1.000.000 VNĐ
 create view v_tong_tien as
 select kh.ma_khach_hang, lk.ten_loai_khach, 
 sum(ifnull(dv.chi_phi_thue, 0) + ifnull(hdct.so_luong, 0) * ifnull(dvdk.gia, 0)) tong_tien
@@ -49,7 +50,7 @@ where kh.ma_khach_hang in (
 select kh.ma_khach_hang, kh.ho_ten 
 from khach_hang kh;
 
--- Câu 19
+-- Câu 19: Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
 update dich_vu_di_kem dvdk
 set gia = gia*2
 where dvdk.ma_dich_vu_di_kem in (
@@ -61,7 +62,8 @@ where dvdk.ma_dich_vu_di_kem in (
 	having sum(ifnull(hdct.so_luong,0)) > 10 
 );
 
--- Câu 20
+-- Câu 20: Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, 
+-- thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.
 select ma_khach_hang as id, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi from khach_hang
 union all
 select ma_nhan_vien, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi from nhan_vien;

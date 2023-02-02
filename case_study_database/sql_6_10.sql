@@ -49,7 +49,8 @@ order by thang;
 -- Bài 10: Hiển thị thông tin tương ứng với từng hợp đồng thì đã sử dụng bao nhiêu dịch vụ đi kèm. 
 -- Kết quả hiển thị bao gồm ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, 
 -- so_luong_dich_vu_di_kem (được tính dựa trên việc sum so_luong ở dich_vu_di_kem).
-select distinct hd.ma_hop_dong, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, hd.tien_dat_coc, 
+select distinct hd.ma_hop_dong, hd.ngay_lam_hop_dong, 
+hd.ngay_ket_thuc, hd.tien_dat_coc, 
 sum(ifnull(so_luong,0)) as so_luong_dich_vu_di_kem 
 from hop_dong_chi_tiet hdct
 right join hop_dong hd on hd.ma_hop_dong = hdct.ma_hop_dong
