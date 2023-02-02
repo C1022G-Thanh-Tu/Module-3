@@ -6,6 +6,7 @@ where nv.ma_nhan_vien not in (
 	select hd.ma_nhan_vien from hop_dong hd
     where year(hd.ngay_lam_hop_dong) between 2019 and 2021
 );
+select * from nhan_vien;
 
 -- Câu 17
 create view v_tong_tien as
@@ -51,13 +52,16 @@ from khach_hang kh;
 -- Câu 19
 update dich_vu_di_kem dvdk
 set gia = gia*2
-where dvdk.ma_dich_vu_di_kem not in (
-	select ma_dich_vu_di_kem from hop_dong_chi_tiet hdct 
+where dvdk.ma_dich_vu_di_kem in (
+	select ma_dich_vu_di_kem 
+    from hop_dong_chi_tiet hdct 
+    where ma_hop_dong in 
+    (select ma_hop_dong from hop_dong where year(ngay_lam_hop_dong) = 2020)
     group by hdct.ma_dich_vu_di_kem
-	having sum(ifnull(hdct.so_luong,0)) < 10 
+	having sum(ifnull(hdct.so_luong,0)) > 10 
 );
 
 -- Câu 20
-select ma_khach_hang, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi from khach_hang
+select ma_khach_hang as id, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi from khach_hang
 union all
 select ma_nhan_vien, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi from nhan_vien;
