@@ -6,8 +6,8 @@ select dv.ma_dich_vu, dv.ten_dich_vu, dv.dien_tich,
 dv.chi_phi_thue, ldv.ten_loai_dich_vụ 
 from dich_vu dv
 join loai_dich_vu ldv on dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu
-where dv.ma_dich_vu not in (select ma_dich_vu from hop_dong hd 
-where quarter(hd.ngay_lam_hop_dong) = 1 
+where dv.ma_dich_vu not in (select ma_dich_vu from hop_dong hd
+where quarter(hd.ngay_lam_hop_dong) = 1
 and year(hd.ngay_lam_hop_dong) = 2021)
 group by dv.ma_dich_vu;
 

@@ -1,6 +1,6 @@
 use furama_database;
 
--- Câu 16
+-- Câu 16: Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
 delete from nhan_vien nv
 where nv.ma_nhan_vien not in (
 	select hd.ma_nhan_vien from hop_dong hd
@@ -38,7 +38,7 @@ where kh.ho_ten = 'Nguyễn Tâm Đắc';
 set sql_safe_updates = 0;
 set sql_safe_updates = 1;
 
--- Câu 18
+-- Câu 18: Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
 set foreign_key_checks = 0;
 delete
 from khach_hang kh 

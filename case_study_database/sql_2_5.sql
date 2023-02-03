@@ -1,5 +1,6 @@
 use furama_database;
 
+-- Câu 2
 select ma_nhan_vien , ho_ten from nhan_vien 
 where 
 (substring_index(ho_ten, ' ', -1) like 'H%'
@@ -7,12 +8,14 @@ or substring_index(ho_ten, ' ', -1) like 'K%'
 or substring_index(ho_ten, ' ', -1) like 'T%')
 and char_length(ho_ten) <= 15;
 
+-- Câu 3
 select khach_hang.ma_khach_hang, ho_ten, ngay_sinh, dia_chi from khach_hang 
 where 
 (year(curdate()) - year(ngay_sinh)) between 18 and 50
 and dia_chi like '%Đà Nẵng'
 or dia_chi like '%Quảng Trị';
 
+-- Câu 4
 select khach_hang.ma_khach_hang , khach_hang.ho_ten, count(hop_dong.ma_khach_hang) as 'Số lần đặt phòng'
 from khach_hang 
 inner join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
@@ -21,6 +24,7 @@ where loai_khach.ten_loai_khach = 'Diamond'
 group by hop_dong.ma_khach_hang
 order by count(hop_dong.ma_khach_hang);
 
+-- Câu 5
 set sql_mode=(select replace(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 select 
   kh.ma_khach_hang, 
