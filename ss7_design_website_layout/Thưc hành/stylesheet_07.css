@@ -1,0 +1,16 @@
+.box-model {
+    border: 10px solid;
+    border-color: chartreuse aqua blue blueviolet;
+}
+.sub-box {
+    border: 1px dotted red;
+    border-width: 5px;
+    margin: 0 10px;
+}
+.sub-box.box-01,  .sub-box.box-02{
+    margin-top: 20px;
+}
+.sub-box.box-03 {
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
