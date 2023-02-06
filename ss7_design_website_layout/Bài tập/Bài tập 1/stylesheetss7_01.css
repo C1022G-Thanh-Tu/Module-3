@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.mt-48 {
+    margin-top: 48px !important;
+}
+
+.mbt-12 {
+    margin-bottom: 12px !important;
+}
+
+.row::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/* .row {
+    display: flex;
+} */
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*=col-] {
+    float: left;
+}
+
+#header{
+    background-color: #222222;
+    height: 46px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+}
+
+.nav li {
+    float: left;
+    line-height: 46px;
+    padding: 0 20px;
+}
+
+.nav li a, 
+#header .login a, 
+#header .login i {
+    color: #ccc;
+    text-decoration: none;
+
+}
+
+.nav li:hover a {
+    color: #fff;
+}
+
+#header .login {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    padding-right: 20px;
+}
+
+#header .login a:hover, 
+#header .login i:hover {
+    cursor: pointer;
+    color: #fff;
+}
+
+#content {
+    margin-top: 46px;
+    min-height: 500px;
+}
+
+#content .link-section, 
+#content .ads-section {
+    padding: 20px 0;
+    background-color: #F1F1F1;
+    height: 500px;
+    text-align: center;
+}
+
+#content .link-section a {
+    color: #609DCF;
+    text-decoration: none;
+}
+
+#content .content-section {
+    padding: 25px 10px;
+}
+
+#content .content-section p {
+    margin-top: 15px;
+    line-height: 1.4;
+}
+
+#content .ads-item {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5%;
+    width: 80%;
+    padding: 20px 0;
+    margin: auto;
+}
+
+#footer {
+    background-color: #555555;
+    height: 46px;
+    text-align: center;
+    line-height: 46px;
+    color: #fff;
+}
+
+@media screen and (max-width: 740px) {
+    #header .nav {
+        display: none;
+    }
+
+    #content .link-section, 
+    #content .content-section,
+    #content .ads-section {
+        width: 100%;
+        height: 100%;
+    }
+}
