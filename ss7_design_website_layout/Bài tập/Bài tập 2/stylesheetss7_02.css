@@ -86,6 +86,7 @@ html {
 
 .video-item .channel {
     opacity: 0.5;
+    line-height: 1.4;
 }
 
 #footer {
