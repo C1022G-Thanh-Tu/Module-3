@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar img {
+    width: 55%;
+}
+
+.ml-n {
+    margin-left: -100px;
+}
+
+.ml-n::before {
+    border-left: 2px solid #000;
+    height: 25px;
+    display: inline-block;
+    content: "";
+    position: absolute;
+    margin-left: -12px;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.ml-n .surface {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.shop-deals {
+    background-color: #0067B8;
+    color: #fff !important;
+    font-weight: bold;
+    margin-right: 260px;
+
+}
+
+#content {
+    position: relative;
+}
+
+#content .description {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#content .description-content {
+    margin-left: 40px;
+}
+
+#content .description-content h1 {
+    font-size: 50px;
+}
+
+#content .description-content h1,
+#content .description-content h4 {
+    line-height: 1.4;
+}
+
+
