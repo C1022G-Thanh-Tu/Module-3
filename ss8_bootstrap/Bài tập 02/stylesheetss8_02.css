@@ -87,4 +87,26 @@
     font-size: 18px;
 }
 
+.footer1 {
+    height: 60px;
+    background-color: #000;
+}
+
+.footer1 p {
+    color: #fff;
+    line-height: 60px;
+    font-size: 13px;
+    margin-left: 60px;
+}
+
+.footer2 .footer-info1 {
+    padding-left: 70px !important;
+    display: inline-block;
+}
+
+.footer2 .footer-info2 {
+    float: right;
+    padding-right: 70px !important;
+}
+
 
