@@ -65,12 +65,26 @@
 #content .img-content {
     position: absolute;
     top: 0;
-    font-size: 26px;
+    font-size: 1.5rem;
     padding: 20px 10px 0 40px;
+    font-weight: 500;
 }
 
 #content .img-content h1 {
-    font-size: 90px;
+    font-size: 6rem;
+}
+
+#content a {
+    text-decoration: none;
+    color: #000;
+}
+
+#content a:hover {
+    border-bottom: 3px solid #000;
+}
+
+#content i {
+    font-size: 18px;
 }
 
 
