@@ -13,10 +13,13 @@
         <ul class="nav">
             <li><a href="" style="font-size: 18px;">Logo</a></li>
             <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Projects</a></li>
-            <li><a href="">Contact</a></li>
+            <li class="rs"><a href="">About</a></li>
+            <li class="rs"><a href="">Projects</a></li>
+            <li class="rs"><a href="">Contact</a></li>
         </ul>
+        <div id="mobile-menu-btn" class="mobile-menu">
+            <i class="ti-menu"></i>
+        </div>
         <div class="login">
             <i class="ti-shift-right"></i>
             <a href="">Login</a>
@@ -52,5 +55,22 @@
     <div id="footer">
         <p>Footer Text</p>
     </div>
+
+    <script>
+        let header = document.getElementById('header');
+        let mobileMenu = document.getElementById('mobile-menu-btn');
+        let headerHeight = header.clientHeight;
+
+        function showHiddenMenu () {
+            let isClosed = header.clientHeight === headerHeight;
+            if (isClosed) {
+                header.style.height = 'auto';
+            } else {
+                header.style.height = null;
+            }
+        }
+        mobileMenu.addEventListener('click', showHiddenMenu);
+
+    </script>
 </body>
 </html>

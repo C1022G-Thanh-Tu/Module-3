@@ -42,17 +42,22 @@ html {
     float: left;
 }
 
-#header{
+#header {
     background-color: #222222;
     height: 46px;
     position: fixed;
     width: 100%;
     z-index: 10;
     top: 0;
+    overflow: hidden;
+}
+
+#header .nav {
+    display: inline-block;
 }
 
 .nav li {
-    float: left;
+    display: inline-block;
     line-height: 46px;
     padding: 0 20px;
 }
@@ -69,12 +74,20 @@ html {
     color: #fff;
 }
 
+#header .mobile-menu {
+    color: #fff;
+    display: none;
+}
+
+#header .mobile-menu:hover {
+    background-color: #ccc;
+    color: #000;
+}
+
+#header .mobile-menu,
 #header .login {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0;
-    padding-right: 20px;
+    padding: 13px 20px; 
+    float: right;
 }
 
 #header .login a:hover, 
@@ -131,8 +144,13 @@ html {
 }
 
 @media screen and (max-width: 740px) {
-    #header .nav {
-        display: none;
+    #header .nav .rs {
+        display: block;
+        padding-left: 104px;
+    }
+
+    #header .mobile-menu {
+        display: block;
     }
 
     #content .link-section, 
