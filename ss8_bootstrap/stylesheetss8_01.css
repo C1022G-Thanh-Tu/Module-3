@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Times New Roman', Times, serif;
+} */
+
+.gallery .card,
+.gallery .card img  {
+    border-radius: 0;
+}
+
+.gallery .card:hover {
+    border: 1px solid rgba(0, 0, 0, 1);
+}
