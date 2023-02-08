@@ -128,9 +128,15 @@
             </div>
         </div>
     </nav>
-    <div class="animation">
-        <p>Animation | <input type="text"> On</p>
+
+    <div class="animation p-2 pe-5">
+        <span>Animation |</span>
+        <span class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+            <label class="form-check-label" for="flexSwitchCheckChecked">On</label>
+        </span>
     </div>
+
     <div id="content">
         <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_22_HP_BHM_Hero_1920x1080.png?version=1a940815-6d48-842b-32b1-1a1e18949693"
             alt="">
@@ -163,6 +169,62 @@
         </div>
     </div>
 
+    <!-- Slideshow container -->
+    <div class="slideshow-container mt-5">
+        <h1>Save on Surface deals</h1>
+        <div class="mySlide fades row">
+            <img src="./img/RE55E5X.png" style="width:33%">
+            <p class="col-6">
+                <span class="slide-heading">Save $100 on select Surface Laptop 5</span> 
+                <br>
+                <span class="slide-sub-heading">Sophisticated style and multitasking speed powered by 12th Gen Intel® Core.</span>
+                
+            </p>
+            <p class="col-2 buy-now" style="display: inline;">
+                Buy now
+            </p>
+        </div>
+
+        <div class="mySlide fades">
+            <img src="./img/RWCMLF.jfif" style="width:33%">
+            <p class="col-6">
+                <span class="slide-heading">Up to $646 off select Surface Laptop 4</span> 
+                <br>
+                <span class="slide-sub-heading">Sophisticated style and multitasking speed powered by 12th Gen Intel® Core.</span>
+                
+            </p>
+            <p class="col-2 buy-now" style="display: inline;">
+                Buy now
+            </p>
+        </div>
+
+        <div class="mySlide fades">
+            <img src="./img/RE59LMj.png" style="width:33%">
+            <p class="col-6">
+                <span class="slide-heading">Save $150 on select Surface Laptop Go 2
+                </span> 
+                <br>
+                <span class="slide-sub-heading">Work and play anywhere with a vibrant touchscreen, comfortable keyboard, and 11th Gen Intel, all in a sleek, lightweight design.
+                </span>
+                
+            </p>
+            <p class="col-2 buy-now" style="display: inline;">
+                Buy now
+            </p>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
+    </div>
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
     <div id="footer">
         <div class="footer1">
             <p>* Some software, accessories, and devices sold separately.</p>
@@ -185,7 +247,34 @@
         </div>
     </div>
 
-    <script src="../../js/bootstrap.js"></script>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "flex";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
 </body>
 
 </html>
