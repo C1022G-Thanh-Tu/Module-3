@@ -11,9 +11,13 @@ public class CalculatorServlet extends HttpServlet {
         double n1 = Double.parseDouble(request.getParameter("n1"));
         double n2 = Double.parseDouble(request.getParameter("n2"));
         String operators = request.getParameter("operators");
-        double result = Calculator.calculate(n1, n2, operators);
-
-        request.setAttribute("result", result);
+        double result = 0;
+        try {
+            result = Calculator.calculate(n1, n2, operators);
+            request.setAttribute("result", result);
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+        }
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
