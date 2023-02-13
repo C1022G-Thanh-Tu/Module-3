@@ -11,7 +11,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Home</title>
   <link rel="stylesheet" href="index_css.css">
   <link rel="stylesheet" href="../themify-icons/themify-icons.css">
   <link rel="stylesheet" href="../css/bootstrap.css">
