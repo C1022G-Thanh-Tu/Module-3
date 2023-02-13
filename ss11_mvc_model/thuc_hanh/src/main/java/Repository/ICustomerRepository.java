@@ -11,7 +11,7 @@ public interface ICustomerRepository {
 
     Customer findById(int id);
 
-    void update(Customer customer);
+    void update(int id ,Customer customer);
 
     void remove(int id);
 }

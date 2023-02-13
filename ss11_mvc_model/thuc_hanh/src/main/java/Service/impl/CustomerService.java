@@ -26,8 +26,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void update(Customer customer) {
-        iCustomerRepository.update(customer);
+    public void update(int id ,Customer customer) {
+        iCustomerRepository.update(id ,customer);
     }
 
     @Override

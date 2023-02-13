@@ -28,7 +28,7 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public void save(Customer customer) {
-        customers.put(customer.getId(), customer);
+        customers.put(customers.size()+1, customer);
     }
 
     @Override
@@ -37,8 +37,7 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public void update(Customer customer) {
-        int id = customers.size()+1;
+    public void update(int id, Customer customer) {
         customers.put(id, customer);
     }
 
