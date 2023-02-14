@@ -48,9 +48,22 @@ public class UserServlet extends HttpServlet {
             case "update":
                 showUpdateForm (request, response);
                 break;
+            case "delete":
+                performDelete (request, response);
+                break;
             default:
                 showListUser (request, response);
                 break;
+        }
+    }
+
+    private void performDelete(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        userService.delete(id);
+        try {
+            response.sendRedirect("/user");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
