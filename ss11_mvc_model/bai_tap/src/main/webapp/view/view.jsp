@@ -1,16 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: DELL
-  Date: 13/02/2023
-  Time: 4:26 CH
+  Date: 14/02/2023
+  Time: 10:13 SA
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Danh sách</title>
+    <title>View</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,37 +19,28 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<a href="/product?actionUser=create" class="btn btn-secondary mb-3">Thêm mới sản phẩm</a>
-<form class="mb-3" action="/product?actionUser=search" method="post">
-    <input type="text" name="search" id="">
-    <input type="submit" value="Tìm kiếm" class="btn btn-secondary">
+<form action="/product" method="get">
+    <h1>Thông tin của sản phẩm ${product.name}</h1>
+    <table class="table">
+        <tr>
+            <th>Hình ảnh</th>
+            <td><img src="${product.imgURL}" alt=""></td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>${product.name}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>${product.price}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>${product.status}</td>
+        </tr>
+    </table>
+    <input type="submit" value="Quay lại danh sách">
 </form>
-
-
-<table class="table">
-    <thead>
-    <tr>
-        <th>STT</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Status</th>
-        <th>Update</th>
-        <th>Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-        <c:forEach var="product" items="${productList}" varStatus="stt">
-            <tr>
-                <td>${stt.count}</td>
-                <td><a href="/product?actionUser=view&id=${product.id}">${product.name}</a></td>
-                <td>${product.price}</td>
-                <td>${product.status}</td>
-                <td><a href="/product?actionUser=update&id=${product.id}" class="btn btn-secondary">Update</a></td>
-                <td><a href="/product?actionUser=delete&id=${product.id}" class="btn btn-danger">Delete</a></td>
-            </tr>
-        </c:forEach>
-    </tbody>
-</table>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

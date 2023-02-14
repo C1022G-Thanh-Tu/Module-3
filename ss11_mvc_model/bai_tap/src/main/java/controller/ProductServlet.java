@@ -57,9 +57,23 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "search":
                 break;
+            case "view":
+                showView (request, response);
+                break;
             default:
                 showListProduct (request, response);
                 break;
+        }
+    }
+
+    private void showView(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        request.setAttribute("product", product);
+        try {
+            request.getRequestDispatcher("/view/view.jsp").forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
