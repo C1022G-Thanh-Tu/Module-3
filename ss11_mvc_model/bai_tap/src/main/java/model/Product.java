@@ -2,7 +2,6 @@ package model;
 
 public class Product {
     private int id;
-    private String imgURL;
     private String name;
     private String price;
     private String status;
@@ -10,9 +9,8 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String imgURL, String name, String price, String status) {
+    public Product(int id, String name, String price, String status) {
         this.id = id;
-        this.imgURL = imgURL;
         this.name = name;
         this.price = price;
         this.status = status;
@@ -23,14 +21,6 @@ public class Product {
         this.name = name;
         this.price = price;
         this.status = status;
-    }
-
-    public String getImgURL() {
-        return imgURL;
-    }
-
-    public void setImgURL(String imgURL) {
-        this.imgURL = imgURL;
     }
 
     public int getId() {

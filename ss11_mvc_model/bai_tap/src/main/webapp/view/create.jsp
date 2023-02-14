@@ -20,6 +20,7 @@
 </head>
 <body>
 <form action="" method="post">
+
     <label for="name">Name</label>
     <input type="text" class="form-control" name="name" id="name">
 
