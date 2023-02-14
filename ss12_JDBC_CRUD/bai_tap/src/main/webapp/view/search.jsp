@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: DELL
   Date: 14/02/2023
-  Time: 4:46 CH
+  Time: 9:37 CH
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>List</title>
+    <title>Search</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,15 +18,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <%--    <link rel="stylesheet" href="./css/bootstrap.css"/>--%>
 </head>
 <body>
-<a href="/user?actionUser=add" class="btn btn-secondary mb-2">Thêm mới user</a>
-<form action="/user?actionUser=search" method="post" class="mb-3">
-    <input type="text" name="countryName" id="" placeholder="input country">
-    <input type="submit" class="btn btn-secondary" value="Search">
-</form>
-
 <table class="table">
     <thead>
     <tr>
@@ -50,8 +43,7 @@
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                     Delete
                 </button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -65,8 +57,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                <a href="/user?actionUser=delete&id=${user.id}" type="button"
-                                   class="btn btn-danger">Yes</a>
+                                <a href="/user?actionUser=delete&id=${user.id}" type="button" class="btn btn-danger">Yes</a>
                             </div>
                         </div>
                     </div>
@@ -76,11 +67,8 @@
     </c:forEach>
     </tbody>
 </table>
-
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<%--<script src="./js/bootstrap.js"></script>--%>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

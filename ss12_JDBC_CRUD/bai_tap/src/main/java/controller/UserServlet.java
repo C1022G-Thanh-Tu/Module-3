@@ -30,6 +30,9 @@ public class UserServlet extends HttpServlet {
             case "update":
                 performUpdate (request, response);
                 break;
+            case "search":
+                performSearch (request, response);
+                break;
             default:
                 break;
         }
@@ -54,6 +57,17 @@ public class UserServlet extends HttpServlet {
             default:
                 showListUser (request, response);
                 break;
+        }
+    }
+
+    private void performSearch(HttpServletRequest request, HttpServletResponse response) {
+        String countryName = request.getParameter("countryName");
+        List<User> userList = userService.searchByCountry(countryName);
+        request.setAttribute("userList", userList);
+        try {
+            request.getRequestDispatcher("/view/search.jsp").forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 

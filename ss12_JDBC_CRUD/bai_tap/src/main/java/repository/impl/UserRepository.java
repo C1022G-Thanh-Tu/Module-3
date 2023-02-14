@@ -11,7 +11,6 @@ import java.util.List;
 
 public class UserRepository implements IUserRepository {
 
-
     @Override
     public void add(User user) {
         PreparedStatement preparedStatement;
@@ -32,7 +31,7 @@ public class UserRepository implements IUserRepository {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = BaseRepository.getConnection()
-                    .prepareStatement("select id, name, email, country from users where id =?");
+                    .prepareStatement("select id, name, email, country from users where id =? order by name");
             preparedStatement.setInt(1,id);
             User user;
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -56,7 +55,7 @@ public class UserRepository implements IUserRepository {
         List<User> userList = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = BaseRepository.getConnection()
-                    .prepareStatement("select id, name, email, country from users");
+                    .prepareStatement("select id, name, email, country from users order by name");
             ResultSet resultSet = preparedStatement.executeQuery();
             User user;
             while (resultSet.next()) {
@@ -102,5 +101,29 @@ public class UserRepository implements IUserRepository {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    @Override
+    public List<User> searchByCountry(String country) {
+        List<User> userList = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = BaseRepository.getConnection()
+                    .prepareStatement("select id, name, email, country from users where country like ? order by name");
+            preparedStatement.setString(1, country);
+            User user;
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setName(resultSet.getString("name"));
+                user.setEmail(resultSet.getString("email"));
+                user.setCountry(resultSet.getString("country"));
+                userList.add(user);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return userList;
     }
 }
