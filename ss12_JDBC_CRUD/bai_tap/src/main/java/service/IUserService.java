@@ -7,8 +7,7 @@ import java.util.List;
 public interface IUserService {
     void add (User user);
     User findById (int id);
-    List<User> listAll ();
-    void delete (int id);
+    List<User> listAll (String countryName);
+    void delete (User user);
     void update (User user);
-    List<User> searchByCountry(String country);
 }

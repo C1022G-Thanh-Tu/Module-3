@@ -30,8 +30,8 @@ public class UserServlet extends HttpServlet {
             case "update":
                 performUpdate (request, response);
                 break;
-            case "search":
-                performSearch (request, response);
+            case "delete":
+                performDelete (request, response);
                 break;
             default:
                 break;
@@ -51,29 +51,16 @@ public class UserServlet extends HttpServlet {
             case "update":
                 showUpdateForm (request, response);
                 break;
-            case "delete":
-                performDelete (request, response);
-                break;
             default:
                 showListUser (request, response);
                 break;
         }
     }
 
-    private void performSearch(HttpServletRequest request, HttpServletResponse response) {
-        String countryName = request.getParameter("countryName");
-        List<User> userList = userService.searchByCountry(countryName);
-        request.setAttribute("userList", userList);
-        try {
-            request.getRequestDispatcher("/view/search.jsp").forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void performDelete(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        userService.delete(id);
+        int id = Integer.parseInt(request.getParameter("deleteId"));
+        User user = userService.findById(id);
+        userService.delete(user);
         try {
             response.sendRedirect("/user");
         } catch (IOException e) {
@@ -132,7 +119,9 @@ public class UserServlet extends HttpServlet {
     }
 
     private void showListUser(HttpServletRequest request, HttpServletResponse response) {
-        List<User> userList = userService.listAll();
+        String countryName = request.getParameter("countryName");
+        request.setAttribute("countryName", countryName);
+        List<User> userList = userService.listAll(countryName);
         request.setAttribute("userList", userList);
         try {
             request.getRequestDispatcher("/view/list.jsp").forward(request, response);

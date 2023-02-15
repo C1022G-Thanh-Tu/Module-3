@@ -20,22 +20,20 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<User> listAll() {
-        return userRepository.listAll();
+    public List<User> listAll(String countryName) {
+        if (countryName == null) {
+            countryName = "";
+        }
+        return userRepository.listAll(countryName);
     }
 
     @Override
-    public void delete(int id) {
-        userRepository.delete(id);
+    public void delete(User user) {
+        userRepository.delete(user);
     }
 
     @Override
     public void update(User user) {
         userRepository.update(user);
-    }
-
-    @Override
-    public List<User> searchByCountry(String country) {
-        return userRepository.searchByCountry(country);
     }
 }
